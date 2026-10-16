@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yunyang Zhao — Quantitative Research Portfolio</title>
+<style>
+  :root{
+    --bg:#f7f8fa; --surface:#ffffff; --border:#e3e6ec;
+    --text:#1f2328; --muted:#5b6472; --accent:#1a5fb4; --accent-soft:#eaf1fb;
+    --up:#c0392b; --down:#1e8449;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:56px 24px 72px}
+  header{border-bottom:1px solid var(--border); padding-bottom:28px; margin-bottom:36px}
+  h1{font-size:28px; margin:0 0 8px; letter-spacing:-0.02em}
+  .sub{color:var(--muted); font-size:16px; margin:0}
+  .links{margin-top:16px; font-size:14px}
+  .links a{color:var(--accent); text-decoration:none; margin-right:18px}
+  .links a:hover{text-decoration:underline}
+  section{margin-bottom:40px}
+  h2{font-size:13px; text-transform:uppercase; letter-spacing:0.09em; color:var(--muted); margin:0 0 14px; font-weight:600}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:24px 26px; margin-bottom:18px;
+  }
+  .card h3{font-size:19px; margin:0 0 4px}
+  .card .tagline{color:var(--muted); font-size:14px; margin:0 0 16px}
+  ul{margin:0; padding-left:18px}
+  li{margin-bottom:7px; font-size:14.5px}
+  .kv{
+    width:100%; border-collapse:collapse; margin:14px 0 4px;
+    font-size:14px; font-variant-numeric:tabular-nums;
+  }
+  .kv th,.kv td{text-align:left; padding:7px 10px; border-bottom:1px solid var(--border)}
+  .kv th{color:var(--muted); font-weight:600; background:#fafbfc; font-size:13px}
+  .kv tr:last-child td{border-bottom:none}
+  .pos{color:var(--up); font-weight:600}
+  .neg{color:var(--down); font-weight:600}
+  .btn{
+    display:inline-block; margin-top:14px; padding:9px 16px; border-radius:7px;
+    background:var(--accent); color:#fff; text-decoration:none; font-size:14px;
+  }
+  .btn.ghost{background:transparent; color:var(--accent); border:1px solid var(--border); margin-left:8px}
+  .btn:hover{opacity:.9}
+  figure{margin:22px 0 0}
+  figure img{
+    width:100%; border:1px solid var(--border); border-radius:8px; background:#fff; display:block;
+  }
+  figcaption{font-size:13px; color:var(--muted); margin-top:8px}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .note{font-size:13.5px; color:var(--muted); margin-top:6px}
+  footer{border-top:1px solid var(--border); padding-top:20px; font-size:13px; color:var(--muted)}
+  @media(max-width:680px){ .grid{grid-template-columns:1fr} .wrap{padding:36px 18px 56px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Yunyang Zhao</h1>
+    <p class="sub">Quantitative research portfolio — commodity futures factor engineering and market state identification.</p>
+    <div class="links">
+      <a href="https://github.com/YunyangZhao22">GitHub profile</a>
+      <a href="https://github.com/YunyangZhao22/Commodity-Momentum-Foundry">Factor library</a>
+      <a href="https://github.com/YunyangZhao22/Market-Regime-Recognition">Regime system</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Project 01 — Commodity Momentum Foundry</h2>
+    <div class="card">
+      <h3>85-factor momentum library for commodity futures</h3>
+      <p class="tagline">Factor specifications, benchmark mapping against classic alpha libraries, and a complete single-factor case study.</p>
+      <ul>
+        <li><strong>Specs</strong> — F01–F85 with Chinese/English names, math symbols and formulas; grouped into time-series, cross-sectional and strategy-level families.</li>
+        <li><strong>Benchmark study</strong> — four-level correspondence to WorldQuant 101 and GTJA 191 alphas; about 30% of factors rely on futures-only inputs (open interest, term structure, warehouse receipts, cross-market linkage) and have no equity-market counterpart.</li>
+        <li><strong>Case study F34 (TRIX)</strong> — triple-exponential-smoothing momentum, 81 contracts, 1-day forward-return framework, train / val / test split.</li>
+        <li><strong>Supporting docs</strong> — reference handbook (notation, data structure, MAD standardisation) and four literature reviews.</li>
+      </ul>
+
+      <table class="kv">
+        <tr><th>Parameter N</th><th>IC</th><th>t-stat</th><th>Long-short annualised</th><th>Sharpe</th><th>Max drawdown</th><th>Turnover</th></tr>
+        <tr><td>N100</td><td class="pos">+0.0087</td><td>1.68</td><td class="pos">+2.3%</td><td>0.28</td><td class="neg">−28.2%</td><td>1.5%</td></tr>
+        <tr><td>N150</td><td class="pos">+0.0136</td><td>2.66</td><td class="pos">+6.6%</td><td><strong>0.70</strong></td><td class="neg">−14.0%</td><td>1.2%</td></tr>
+        <tr><td>N200</td><td class="pos">+0.0144</td><td>2.75</td><td class="pos">+6.3%</td><td><strong>0.69</strong></td><td class="neg">−13.9%</td><td>1.0%</td></tr>
+        <tr><td>N250</td><td class="pos">+0.0143</td><td>2.64</td><td class="pos">+5.5%</td><td>0.61</td><td class="neg">−15.7%</td><td>0.8%</td></tr>
+      </table>
+      <p class="note">Net of transaction costs. Structure is monotonic: short horizons are neutral-to-weak-reversal, N≥100 turns significantly momentum. Cross-sectional IC is positive while time-series IC is negative — the factor carries relative strength across contracts, not absolute timing for a single contract.</p>
+
+      <div class="grid">
+        <figure>
+          <img src="assets/equity_drawdown.png" alt="Equity and drawdown curve of the equal-weight multi-horizon combination">
+          <figcaption>Equal-weight multi-horizon combination: net value and drawdown.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/single_factor_sharpe.png" alt="Long-short Sharpe ratio across parameter N">
+          <figcaption>Long-short Sharpe across N; optimal band is N150–N200.</figcaption>
+        </figure>
+      </div>
+
+      <a class="btn" href="https://github.com/YunyangZhao22/Commodity-Momentum-Foundry">View repository</a>
+      <a class="btn ghost" href="https://github.com/YunyangZhao22/Commodity-Momentum-Foundry/blob/main/research/F34_TRIX/%E5%9B%9E%E6%B5%8B%E6%8A%A5%E5%91%8A.md">Full backtest report</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Project 02 — Market Regime Recognition</h2>
+    <div class="card">
+      <h3>Six-state regime identification for commodity futures</h3>
+      <p class="tagline">Built as nowcast, not forecast: direction is largely unpredictable (signal half-life ≈ 12h), while volatility and regime are identifiable. Positioned for risk control and discipline rather than timing alpha.</p>
+      <ul>
+        <li><strong>Core signal</strong> — <code>signal = sign(R) × min(E/eff, 1)</code>: direction times trend-efficiency saturation, compressed into [−1, +1]. Hull MA smoothing.</li>
+        <li><strong>Five timeframes</strong> — 15min / 30min / 60min / 2h / 4h, each with separately calibrated <code>(win, eff)</code> pairs; the five converge, and 60min serves as the primary signal.</li>
+        <li><strong>Probabilistic framework</strong> — five-dimensional feature vector → hard anomaly gate (gap / volatility burst / limit-lock / liquidity) → generative posterior over six states → HMM forward filtering with grey-zone detection via normalised entropy.</li>
+        <li><strong>Interactive visualisation</strong> — K-line charts with regime colour bands and state statistics; red for long, green for short (domestic futures convention).</li>
+      </ul>
+
+      <table class="kv">
+        <tr><th>Timeframe</th><th>win</th><th>eff</th></tr>
+        <tr><td>15 min</td><td>108</td><td>0.22</td></tr>
+        <tr><td>30 min</td><td>54</td><td>0.31</td></tr>
+        <tr><td><strong>60 min</strong></td><td><strong>27</strong></td><td><strong>0.44</strong></td></tr>
+        <tr><td>2 h</td><td>21</td><td>0.46</td></tr>
+        <tr><td>4 h</td><td>12</td><td>0.60</td></tr>
+      </table>
+
+      <a class="btn" href="market-regime-daily.html">Open live demo</a>
+      <a class="btn ghost" href="https://github.com/YunyangZhao22/Market-Regime-Recognition">View repository</a>
+      <p class="note">The demo page is self-contained (data and ECharts embedded, about 11 MB) and runs entirely in the browser.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Method stack</h2>
+    <div class="card">
+      <p style="margin:0; font-size:14.5px">Python (pandas, numpy, scipy, pyarrow) · factor engineering · cross-sectional backtesting (IC, quantile groups, long-short, cost sensitivity, train/val/test split) · MAD robust standardisation · HMM and probabilistic state modelling · ECharts interactive visualisation</p>
+    </div>
+  </section>
+
+  <footer>
+    Research documentation only. Backtests use continuously-concatenated main contracts and are intended for factor comparison and direction judgement, not for position-level replication. Nothing here constitutes investment advice.
+  </footer>
+
+</div>
+</body>
+</html>
